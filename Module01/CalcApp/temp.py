@@ -17,11 +17,11 @@ def mainMenu():
         # Ask the user to choose one of the options.
         try:
             sent = int(input("\n----------------- Menu -----------------\n"\
-                               "1) Purchase an item.\n"\
-                               "2) View inventory.\n"\
-                               "3) Sell an item.\n"\
-                               "4) View total inventory value.\n"\
-                               "5) Exit the program.\n"\
+                               "1) Add\n"\
+                               "2) Subtract\n"\
+                               "3) Divide\n"\
+                               "4) Multiply\n"\
+                               "0) Exit the program.\n"\
                                "----------------------------------------\n"\
                                "Enter your choice:\t"))
                 
@@ -75,6 +75,10 @@ def CaclMultiply(a,b):
 
 def GetNumbers():
     
+    a = float(input("Enter a number:  "))
+    b = float(input("Enter a number:  "))
+    
+    return a,b
     
 #=========#
 def main():
@@ -90,7 +94,7 @@ def main():
         sent = mainMenu()
         
         #==============================#
-        # OPTION 1:  Purchase an item. #
+        # OPTION 1:  Add #
         #==============================#
         
         # If the user chooses option 1:
@@ -114,110 +118,7 @@ def main():
                     # transaction.
                     if itemName == "cancel":
                         break
-                    
-                    # Assigns the node with the matching name to a new variable (this makes the 
-                    # variable name shorter when referencing it later in the code.
-                    purchase = shop_inventory.ListSearch(itemName)
-                    
-                    # If the item is found in the store's inventory:
-                    if purchase:
                         
-                        # Initialize item quantity.
-                        itemQuantity = -1
-                        
-        
-                        while itemQuantity < 0:
-                            try: 
-                                # Prompt the user for the number of items he wants to purchase.
-                                itemQuantity = int(input("\nHow many " + itemName + "s do you want to buy?\t"))
-                                
-                                if (itemQuantity < 0):
-                                    raise ValueError
-                                
-                            # If the user does not enter a positive int, display an error message.
-                            except ValueError:
-                                print("\nPlease use only positive integer values.")
-                            
-                            # General error statement.
-                            except:
-                                print("General Error.")
-                        
-                        
-                        # Check to see if the item is in the shop inventory
-                        if (itemQuantity <= purchase.quant):
-                            
-                            print("\n" + itemName.capitalize() + " found in stock! (quantity: " \
-                                  + str(purchase.quant) + ")\n")
-                            time.sleep(3)
-                            
-                            # Checking to make sure funds are available.
-                            if (player_money < purchase.price*itemQuantity):
-                                print("\nYou do not have enough funds to make this purchase.")
-                                time.sleep(3)
-                                break
-                            
-                            else:
-                                # Updating player currency.
-                                player_money = player_money - purchase.price * itemQuantity
-                            
-                            if TESTING:
-                                print()
-                                printInventory("player (before purchase)", player_inventory)
-                                time.sleep(3)
-                            
-                            # Does the player already have this item?
-                            item_in_player_inventory = player_inventory.ListSearch(itemName)
-                            
-                            # Updating player inventory.
-                            # If the same type of item already exists in the player inventory:
-                            if item_in_player_inventory:
-                                
-                                # Increase the quantity of the item in the player's inventory
-                                update_player_node = Node(item_in_player_inventory.item,\
-                                                          item_in_player_inventory.price,\
-                                                          item_in_player_inventory.quant + itemQuantity)
-                                
-                                # can update node.quant directly
-                                # node.quant = node.quant +/- itemQuantity
-                                
-                                
-                                # Updating player_inventory linked list
-                                existingItemQuantityUpdate(player_inventory, item_in_player_inventory,\
-                                                           update_player_node)
-                                
-                            # If the item is not in the player inventory:
-                            else:    
-                                # Add new item to player's inventory.
-                                player_inventory.append(Node(purchase.item, purchase.price, itemQuantity))
-                                
-                            printInventory("player", player_inventory)
-                            print("Amount of gold: ", player_money)
-                            time.sleep(3)
-                            
-                            # Create new shop_inventory node
-                            update_shop_node = Node(purchase.item, purchase.price, purchase.quant - itemQuantity)
-                            # Update shop_inventory item quantity
-                            existingItemQuantityUpdate(shop_inventory, purchase, update_shop_node)
-                            
-                            if TESTING:
-                                print()
-                                printInventory("updated shop", shop_inventory)
-                                time.sleep(3)
-                        
-                        # Make sure there are enough items in stock.
-                        else:
-                            
-                            print("\nThere are not " + str(itemQuantity) + " " + itemName + "s in stock. "\
-                                  "You can only purchase " + str(purchase.quant) + " or fewer." )
-                            time.sleep(3)
-                            
-                        break
-                    
-                    # If the item is not found in the shop inventory.
-                    else:
-                        
-                        print("\n" + itemName.capitalize() + " not found! Try again!")
-                        time.sleep(3)
                     
                 while True:
                     try:
@@ -243,21 +144,15 @@ def main():
                         break
                     
         #============================#
-        # OPTION 2:  View inventory. #
+        # OPTION 2:  Subtract #
         #============================#
         
         # If the user chooses option 2:
         elif sent == 2:
             
             print("\n |============================|"\
-                  "\n | OPTION 2:  View inventory. |"\
+                  "\n | OPTION 2:  Subtract |"\
                   "\n |============================|\n")
-            
-            # Display player's inventory.
-            printInventory("player", player_inventory)
-            
-            # Display player's currency
-            print("Amount of gold: ", player_money)
              
         #==========================#
         # OPTION 3:  Sell an item. #
@@ -273,109 +168,9 @@ def main():
                     
                     # Print option label.
                     print("\n |==========================|"\
-                          "\n | OPTION 3:  Sell an item. |"\
+                          "\n | OPTION 3:  Divide |"\
                           "\n |==========================|\n")
                         
-                    # Display the shops inventory to determine what and how much to purchase    
-                    printInventory("player", player_inventory)
-                    
-                    # Remind the user how much money he has to use.
-                    print("Amount of gold: ", player_money)
-                    
-                    # Prompt the user for the name of the item he wants to sell.
-                    itemName = input("""\nWhat is the item that you want to sell? ("cancel" to exit)\t""")
-                    itemName = itemName.strip().lower()
-                    
-                    if itemName == "cancel":
-                        break
-                    
-                    # Finding the item the player wants to sell.
-                    selling = player_inventory.ListSearch(itemName)
-                    
-                    if selling:
-                        
-                        itemQuantity = -1
-                    
-                        while itemQuantity < 0:
-                            try: 
-                                # Prompt the user for the number of items he wants to purchase.
-                                itemQuantity = int(input("\nHow many " + itemName + "s do you want to sell?\t"))
-                                
-                                if (itemQuantity < 0):
-                                    raise ValueError
-                                    
-                            # If the user does not enter an int, display an error message.
-                            except ValueError:
-                                print("\nPlease use only positive integer values.")
-                            
-                            # General error statement.
-                            except:
-                                print("General Error.")
-                        
-                        if TESTING:
-                            print("\nYou want to sell " + str(itemQuantity) + " " + itemName + "s.\n")
-                        else:
-                            print()
-                        
-                        # If the item is found in the player's inventory and the quantity to sell does
-                        # not exceed the inventory quantity:
-                        if (itemQuantity <= selling.quant):
-                            
-                            player_money = player_money + selling.price * itemQuantity
-                            
-                            if TESTING:
-                                printInventory("shop (before sale)", shop_inventory)
-                                time.sleep(3)
-                                
-                            # Does the player already have this item?
-                            item_in_shop_inventory = shop_inventory.ListSearch(itemName)
-                            
-                            # Updating shop inventory.
-                            # If the same type of item already exists in the shop's inventory:
-                            if item_in_shop_inventory:
-                                
-                                # Increase the quantity of the item in the shop's inventory
-                                update_shop_node = Node(item_in_shop_inventory.item,\
-                                                          item_in_shop_inventory.price,\
-                                                          item_in_shop_inventory.quant + itemQuantity)
-                                    
-                                # Updating player_inventory linked list
-                                existingItemQuantityUpdate(shop_inventory, item_in_shop_inventory,\
-                                                           update_shop_node)
-                                    
-                            # If the item is not in the shop inventory:
-                            else:    
-                                # Add new item to shop's inventory.
-                                shop_inventory.append(Node(selling.item, selling.price, itemQuantity))
-                            
-                            if TESTING:
-                                printInventory("shop", shop_inventory)
-                                time.sleep(3)
-                            
-                            # Create new player_inventory node
-                            update_player_node = Node(selling.item, selling.price,\
-                                                      selling.quant - itemQuantity)
-                            # Update player_inventory item quantity
-                            existingItemQuantityUpdate(player_inventory, selling, update_player_node)
-                            
-                            if TESTING:
-                                printInventory("player", player_inventory)
-                                time.sleep(3)
-                            
-                            print("Amount of gold: ", player_money)
-                            break
-                        
-                        # If the item is found in the player's inventory but the quantity to sell
-                        # exceeds the inventory quantity:  display an error
-                        else:
-                            print("You don't have " + str(itemQuantity) + " " + itemName + \
-                                  "s. (quantity cannot exceed inventory)")
-                            time.sleep(3)
-                                
-                    else:
-                        
-                        print("\n" + itemName.capitalize() + " not found! Try again!")
-                        time.sleep(3)
                         
                 while True:
                     try:
@@ -407,11 +202,10 @@ def main():
         elif sent == 4:
             
             print("\n |========================================|"\
-                  "\n | OPTION 4:  View total inventory value. |"\
+                  "\n | OPTION 4:  Multiply |"\
                   "\n |========================================|\n")
             
-            printInventory("player", player_inventory)
-            print("Total Value = ", player_inventory.inventoryValue())
+            
             
             
         #==============================#
@@ -419,7 +213,7 @@ def main():
         #==============================#
         
         # If the user chooses option 5:
-        elif sent == 5:
+        elif sent == 0:
             
             # Display a good-bye message and terminate the program.
             print("\nExiting Program.")
