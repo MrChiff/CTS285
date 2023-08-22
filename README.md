@@ -1,2 +1,2 @@
-# CTS 285
-# Jonathan Hardwick
+CTS 285
+Jonathan Hardwick
