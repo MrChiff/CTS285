@@ -60,27 +60,36 @@ def errorMessage():
     """
     
     print("\nError:  Your choice is not valid.  Please enter a corrrect value.")
-    
+
+#================#
 def calcAdd(a, b):
+#================#
     return a + b
 
+#=====================#
 def calcSubtract(a, b):
+#=====================#
     return a-b
 
+#===================#
 def calcDivide(a, b):
+    
     return a/b
 
 def caclMultiply(a,b):
     return a*b
-
+#===============#
 def getNumbers():
+#===============#
     
     a = float(input("Enter a number:  "))
     b = float(input("Enter a number:  "))
     
     return (a,b)
 
+#===========#
 def repeat():
+#===========#
     
     cont = int(input(("1. Repeat\n" \
                       "2. Main Menu\n" \
@@ -229,11 +238,31 @@ def main():
         # If the user chooses option 4:
         elif sent == 4:
             
-            print("\n |========================================|"\
+            print("\n |=====================|"\
                   "\n | OPTION 4:  Multiply |"\
-                  "\n |========================================|\n")
+                  "\n |=====================|\n")
             
-            
+             # while True:
+             #        try:
+             #            # Asking the player if he wants to purchase another item
+             #            cont = int(input("\nDo you want to sell another item?\n" + \
+             #                         "1) Yes\n" + \
+             #                         "2) No\n"))
+                            
+             #            if (cont < 0 or cont > 3):
+             #                raise ValueError
+                    
+             #        # If the user does not enter an int, display an error message.
+             #        except ValueError:
+                        
+             #            print("\nPlease input a valid integer value.")
+                    
+             #        # Catch-all general error.
+             #        except:
+             #            print("\nGeneral Error.")
+                        
+             #        else:
+             #            break
             
             
         #==============================#
