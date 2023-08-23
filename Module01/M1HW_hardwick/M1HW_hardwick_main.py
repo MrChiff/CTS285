@@ -61,98 +61,126 @@ def errorMessage():
     
     print("\nError:  Your choice is not valid.  Please enter a corrrect value.")
     
-def CalcAdd(a, b):
+def calcAdd(a, b):
     return a + b
 
-def CalcSubtract(a, b):
+def calcSubtract(a, b):
     return a-b
 
-def CalcDivide(a, b):
+def calcDivide(a, b):
     return a/b
 
-def CaclMultiply(a,b):
+def caclMultiply(a,b):
     return a*b
 
-def GetNumbers():
+def getNumbers():
     
     a = float(input("Enter a number:  "))
     b = float(input("Enter a number:  "))
     
-    return a,b
+    return (a,b)
+
+def repeat():
     
+    cont = int(input(("1. Repeat\n" \
+                      "2. Main Menu\n" \
+                      "Enter a number: ")))
+    return cont
+
 #=========#
 def main():
 #=========#
 
     # Initialize the sentinel value to zero.
-    sent = 0
+    sent = -1
 
     # While the user wants to continue to use the program (the sentinel value is not equal to 5):
-    while sent != 5:
+    while sent != 0:
     
         # Display the main menu to the user.
         sent = mainMenu()
         
-        #==============================#
+        #================#
         # OPTION 1:  Add #
-        #==============================#
+        #================#
         
         # If the user chooses option 1:
         if sent == 1:
             
             # Initialize the continuation value. (just for this option)
-            cont = 1
+            cont = -1
             
             # While the user wants to continue with the purchase:
             while cont != 2:
                 
-                while True:
+                # Print option label.
+                print("\n |================|"\
+                      "\n | OPTION 1:  Add |"\
+                      "\n |================|\n")
                     
-                    # Print option label.
-                    print("\n |================|"\
-                          "\n | OPTION 1:  Add |"\
-                          "\n |================|\n")
+                a, b = getNumbers()
+                print(a, " + ", b, "=", calcAdd(a,b), "\n")
+
+                try:
+                    # Asking the user how he wants to proceed.
+                    cont = repeat()
                     
+                    # If the user does not enter 1 or 2.
+                    if (cont < 0 or cont > 3):
+                        raise ValueError
+                
+                # If the user does not enter an int, display an error message.
+                except ValueError:
                     
-                    # If the user does not want to continue he can type "cancel" to end the 
-                    # transaction.
-                    if itemName == "cancel":
-                        break
-                        
+                    print("\nPlease input a valid integer value.")
+                
+                # Catch-all general error.
+                except:
+                    print("\nGeneral Error.")
                     
-                while True:
-                    try:
-                        # Asking the player if he wants to purchase another item.
-                        cont = int(input("\nDo you want to sell another item?\n" + \
-                                     "1) Yes\n" + \
-                                     "2) No\n"))
-                        
-                        # If the user does not enter 1 or 2.
-                        if (cont < 0 or cont > 3):
-                            raise ValueError
+                else:
+                    break
                     
-                    # If the user does not enter an int, display an error message.
-                    except ValueError:
-                        
-                        print("\nPlease input a valid integer value.")
-                    
-                    # Catch-all general error.
-                    except:
-                        print("\nGeneral Error.")
-                        
-                    else:
-                        break
-                    
-        #============================#
+        #=====================#
         # OPTION 2:  Subtract #
-        #============================#
+        #=====================#
         
-        # If the user chooses option 2:
-        elif sent == 2:
+        # If the user chooses option 1:
+        if sent == 2:
             
-            print("\n |============================|"\
-                  "\n | OPTION 2:  Subtract |"\
-                  "\n |============================|\n")
+            # Initialize the continuation value. (just for this option)
+            cont = -1
+            
+            # While the user wants to continue with the purchase:
+            while cont != 2:
+                
+                # Print option label.
+                print("\n |=====================|"\
+                      "\n | OPTION 1:  Subtract |"\
+                      "\n |=====================|\n")
+                    
+                a, b = getNumbers()
+                print(a, " + ", b, "=", calcSubtract(a,b), "\n")
+
+                try:
+                    # Asking the user how he wants to proceed.
+                    cont = repeat()
+                    
+                    # If the user does not enter 1 or 2.
+                    if (cont < 0 or cont > 3):
+                        raise ValueError
+                
+                # If the user does not enter an int, display an error message.
+                except ValueError:
+                    
+                    print("\nPlease input a valid integer value.")
+                
+                # Catch-all general error.
+                except:
+                    print("\nGeneral Error.")
+                    
+                else:
+                    break
              
         #==========================#
         # OPTION 3:  Sell an item. #
@@ -167,9 +195,9 @@ def main():
                 while True:
                     
                     # Print option label.
-                    print("\n |==========================|"\
+                    print("\n |===================|"\
                           "\n | OPTION 3:  Divide |"\
-                          "\n |==========================|\n")
+                          "\n |===================|\n")
                         
                         
                 while True:
