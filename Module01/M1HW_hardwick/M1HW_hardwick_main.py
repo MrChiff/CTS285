@@ -1,6 +1,8 @@
 # CTS 285 Calc App
 
 
+from M1HW_hardwick_math import Calculations
+
 #=============#
 def mainMenu():
 #=============#
@@ -27,7 +29,7 @@ def mainMenu():
                 
         # If the user does not enter an int, display an error message.
         except ValueError:
-            print("\nPlease enter an appropriate choice.")
+            print("\nPlease input a valid integer value.")
         
         # General error statement.
         except:
@@ -70,7 +72,7 @@ def calcSubtract(a, b):
 def calcDivide(a, b):
     return a/b
 
-def caclMultiply(a,b):
+def calcMultiply(a,b):
     return a*b
 
 def getNumbers():
@@ -81,11 +83,38 @@ def getNumbers():
     return (a,b)
 
 def repeat():
+        
+    while True:
+        try:
+            # Asking the user how he wants to proceed.
+            cont = int(input(("1. Repeat\n" \
+                              "2. Main Menu\n" \
+                              "Enter a number: ")))
+            
+            # If the user does not enter 1 or 2.
+            if (cont < 1 or cont > 3):
+                raise ValueError
+        
+        # If the user does not enter an appropriate int, display an
+        # error message.
+        except ValueError:
+            
+            print("\nPlease input a valid integer value.")
+        
+        # Catch-all general error.
+        except:
+            print("\nGeneral Error.")
+            
+        else:
+            break
     
-    cont = int(input(("1. Repeat\n" \
-                      "2. Main Menu\n" \
-                      "Enter a number: ")))
     return cont
+
+# Add number validation/exception handling to getNumbers() 
+# Should the repeat() menu be in a separate function?
+# put exception handling in repeat() 
+# should the display of the math equation be put in the calc* functions
+
 
 #=========#
 def main():
@@ -94,7 +123,7 @@ def main():
     # Initialize the sentinel value to zero.
     sent = -1
 
-    # While the user wants to continue to use the program (the sentinel value is not equal to 5):
+    # While the user wants to continue to use the program (the sentinel value is not equal to 0):
     while sent != 0:
     
         # Display the main menu to the user.
@@ -120,26 +149,10 @@ def main():
                     
                 a, b = getNumbers()
                 print(a, " + ", b, "=", calcAdd(a,b), "\n")
-
-                try:
-                    # Asking the user how he wants to proceed.
-                    cont = repeat()
-                    
-                    # If the user does not enter 1 or 2.
-                    if (cont < 0 or cont > 3):
-                        raise ValueError
                 
-                # If the user does not enter an int, display an error message.
-                except ValueError:
-                    
-                    print("\nPlease input a valid integer value.")
+                Calculations.add(a,b)
                 
-                # Catch-all general error.
-                except:
-                    print("\nGeneral Error.")
-                    
-                else:
-                    break
+                cont = repeat()
                     
         #=====================#
         # OPTION 2:  Subtract #
@@ -156,85 +169,53 @@ def main():
                 
                 # Print option label.
                 print("\n |=====================|"\
-                      "\n | OPTION 1:  Subtract |"\
+                      "\n | OPTION 2:  Subtract |"\
                       "\n |=====================|\n")
                     
                 a, b = getNumbers()
-                print(a, " + ", b, "=", calcSubtract(a,b), "\n")
-
-                try:
-                    # Asking the user how he wants to proceed.
-                    cont = repeat()
-                    
-                    # If the user does not enter 1 or 2.
-                    if (cont < 0 or cont > 3):
-                        raise ValueError
+                print(a, " - ", b, "=", calcSubtract(a,b), "\n")
                 
-                # If the user does not enter an int, display an error message.
-                except ValueError:
-                    
-                    print("\nPlease input a valid integer value.")
-                
-                # Catch-all general error.
-                except:
-                    print("\nGeneral Error.")
-                    
-                else:
-                    break
+                cont = repeat()
              
-        #==========================#
-        # OPTION 3:  Sell an item. #
-        #==========================#
+        #===================#
+        # OPTION 3:  Divide #
+        #===================#
         
         # If the user chooses option 3:
         elif sent == 3:
             
-            cont = 1
+            cont = -1
             while cont != 2:
                 
-                while True:
+                # Print option label.
+                print("\n |===================|"\
+                      "\n | OPTION 3:  Divide |"\
+                      "\n |===================|\n")
                     
-                    # Print option label.
-                    print("\n |===================|"\
-                          "\n | OPTION 3:  Divide |"\
-                          "\n |===================|\n")
-                        
-                        
-                while True:
-                    try:
-                        # Asking the player if he wants to purchase another item
-                        cont = int(input("\nDo you want to sell another item?\n" + \
-                                     "1) Yes\n" + \
-                                     "2) No\n"))
+                a, b = getNumbers()
+                print(a, " / ", b, "=", calcDivide(a,b), "\n")
+                
+                cont = repeat()
                             
-                        if (cont < 0 or cont > 3):
-                            raise ValueError
-                    
-                    # If the user does not enter an int, display an error message.
-                    except ValueError:
-                        
-                        print("\nPlease input a valid integer value.")
-                    
-                    # Catch-all general error.
-                    except:
-                        print("\nGeneral Error.")
-                        
-                    else:
-                        break
-                            
-        #========================================#
-        # OPTION 4:  View total inventory value. #
-        #========================================#
+        #=====================#
+        # OPTION 4:  Multiply #
+        #=====================#
         
         # If the user chooses option 4:
         elif sent == 4:
             
-            print("\n |========================================|"\
-                  "\n | OPTION 4:  Multiply |"\
-                  "\n |========================================|\n")
-            
-            
-            
+            cont = -1
+            while cont != 2:
+                
+                # Print option label.
+                print("\n |=====================|"\
+                      "\n | OPTION 4:  Multiply |"\
+                      "\n |=====================|\n")
+                    
+                a, b = getNumbers()
+                print(a, " x ", b, "=", calcMultiply(a,b), "\n")
+                
+                cont = repeat()            
             
         #==============================#
         # OPTION 5:  Exit the program. #
