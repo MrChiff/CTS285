@@ -1,4 +1,7 @@
-# CTS 285 Calc App
+# CTS 285
+# M1HW
+# Jonathan Hardwick
+# 23/08/30
 
 
 from M1HW_hardwick_math import Calculations
@@ -112,7 +115,6 @@ def repeat():
 
 # Add number validation/exception handling to getNumbers() 
 # Should the repeat() menu be in a separate function?
-# put exception handling in repeat() 
 # should the display of the math equation be put in the calc* functions
 
 
