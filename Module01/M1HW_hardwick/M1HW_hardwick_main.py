@@ -126,6 +126,7 @@ from M1HW_hardwick_UI import UI
 # should the display of the math equation be put in the calc* functions
 # Ask Norris how I should send the numbers to the Calculations class (commented vs uncommented 
 #   version of Calculations.add())
+# add division by zero exception in option 4: divide
 
 
 #=========#
@@ -139,7 +140,7 @@ def main():
     while sent != 0:
     
         # Display the main menu to the user.
-        sent = UI.mainMenu()
+        sent = UI().mainMenu()
         
         #================#
         # OPTION 1:  Add #
@@ -154,20 +155,7 @@ def main():
             # While the user wants to continue with the purchase:
             while cont != 2:
                 
-                # Print option label.
-                print("\n |================|"\
-                      "\n | OPTION 1:  Add |"\
-                      "\n |================|\n")
-                    
-                # a, b = getNumbers()
-                a,b = UI.getNumbers()
-                # print(a, " + ", b, "=", calcAdd(a,b), "\n")
-                # calc = Calculations(a,b)
-                # print(a, " + ", b, "=", Calculations(a,b).add(a,b), "\n")
-                # print(a, " + ", b, "=", Calculations(a,b).add(), "\n")
-                # print(a, " + ", b, "=", Calculations().add(a,b), "\n")
-                Calculations().add(a,b)
-                cont = UI.repeat()
+                cont = UI().option1()
                     
         #=====================#
         # OPTION 2:  Subtract #

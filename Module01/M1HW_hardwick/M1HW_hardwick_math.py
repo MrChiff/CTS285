@@ -13,17 +13,15 @@ class Calculations:
     
     def add(self, a, b):
         print(a, " + ", b, "=", a+b, "\n")
-    
-    
 
     def subtract(self, a, b):
-        return a-b
+        print(a, " - ", b, "=", a-b, "\n")
 
     def divide(self, a, b):
-        return a/b
+        print(a, " \N{DIVISION SIGN} ", b, "=", a/b, "\n")
 
     def multiply(self, a,b):
-        return a*b
+        print(a, " \N{MULTIPLICATION SIGN} ", b, "=", a*b, "\n")
         
     # def __repr__(self):
         

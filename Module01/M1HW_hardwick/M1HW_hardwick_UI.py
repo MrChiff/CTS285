@@ -1,6 +1,11 @@
+from M1HW_hardwick_math import Calculations
+
 class UI:
+    
+    # from M1HW_hardwick_math import Calculations
+    
     #=============#
-    def mainMenu():
+    def mainMenu(self):
     #=============#
     
         """ 
@@ -47,7 +52,7 @@ class UI:
         return sent
     
     #=================#
-    def errorMessage():
+    def errorMessage(self):
     #=================#
     
         """ 
@@ -60,7 +65,7 @@ class UI:
         print("\nError:  Your choice is not valid.  Please enter a corrrect value.")
     
     #===============#    
-    def getNumbers():
+    def getNumbers(self):
     #===============#
         
         a = float(input("Enter a number:  "))
@@ -69,7 +74,7 @@ class UI:
         return (a,b)
     
     #===========#
-    def repeat():
+    def repeat(self):
     #===========#
             
         while True:
@@ -98,3 +103,13 @@ class UI:
         
         return cont
     
+    def option1(self):
+        
+        # Print option label.
+        print("\n |================|"\
+              "\n | OPTION 1:  Add |"\
+              "\n |================|\n")
+            
+        a,b = UI().getNumbers()
+        Calculations().add(a,b)
+        return UI().repeat()
