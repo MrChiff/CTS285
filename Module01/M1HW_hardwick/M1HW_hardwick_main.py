@@ -5,117 +5,127 @@
 
 
 from M1HW_hardwick_math import Calculations
+from M1HW_hardwick_UI import UI
 
-#=============#
-def mainMenu():
-#=============#
+# #=============#
+# def mainMenu():
+# #=============#
 
-    """ 
-    This function displays the main menu to the user. 
+#     """ 
+#     This function displays the main menu to the user. 
     
-    inputs: none
-    outputs: sent (user selection/sentinel value) and displays main menu
-    """
+#     inputs: none
+#     outputs: sent (user selection/sentinel value) and displays main menu
+#     """
     
-    while True:
+#     while True:
         
-        # Ask the user to choose one of the options.
-        try:
-            sent = int(input("\n----------------- Menu -----------------\n"\
-                               "1) Add\n"\
-                               "2) Subtract\n"\
-                               "3) Divide\n"\
-                               "4) Multiply\n"\
-                               "0) Exit the program.\n"\
-                               "----------------------------------------\n"\
-                               "Enter your choice:\t"))
+#         # Ask the user to choose one of the options.
+#         try:
+#             sent = int(input("\n----------------- Menu -----------------\n"\
+#                                "1) Add\n"\
+#                                "2) Subtract\n"\
+#                                "3) Divide\n"\
+#                                "4) Multiply\n"\
+#                                "0) Exit the program.\n"\
+#                                "----------------------------------------\n"\
+#                                "Enter your choice:\t"))
                 
-        # If the user does not enter an int, display an error message.
-        except ValueError:
-            print("\nPlease input a valid integer value.")
+#         # If the user does not enter an int, display an error message.
+#         except ValueError:
+#             print("\nPlease input a valid integer value.")
         
-        # General error statement.
-        except:
-            print("General Error.")
+#         # General error statement.
+#         except:
+#             print("General Error.")
         
-        # Int input validation. 
-        else:
+#         # Int input validation. 
+#         else:
             
-            # If the user's input is an integer but not and appropriate choice: 
-            if (sent > 5):
-                errorMessage()
-                mainMenu()
+#             # If the user's input is an integer but not and appropriate choice: 
+#             if (sent > 5):
+#                 errorMessage()
+#                 mainMenu()
             
-            # If the user's input passes the previous validation steps, break the while loop and 
-            # return "sent".
-            else:
-                break
+#             # If the user's input passes the previous validation steps, break the while loop and 
+#             # return "sent".
+#             else:
+#                 break
     
-    return sent
+#     return sent
 
-#=================#
-def errorMessage():
-#=================#
+# #=================#
+# def errorMessage():
+# #=================#
 
-    """ 
-    This function lets the user know that the option chosen is not in the menu. 
+#     """ 
+#     This function lets the user know that the option chosen is not in the menu. 
     
-    inputs: none
-    outputs: displays error message and the main menu
-    """
+#     inputs: none
+#     outputs: displays error message and the main menu
+#     """
     
-    print("\nError:  Your choice is not valid.  Please enter a corrrect value.")
+#     print("\nError:  Your choice is not valid.  Please enter a corrrect value.")
     
-def calcAdd(a, b):
-    return a + b
+# def calcAdd(a, b):
+#     return a + b
 
-def calcSubtract(a, b):
-    return a-b
+# def calcSubtract(a, b):
+#     return a-b
 
-def calcDivide(a, b):
-    return a/b
+# def calcDivide(a, b):
+#     return a/b
 
-def calcMultiply(a,b):
-    return a*b
+# def calcMultiply(a,b):
+#     return a*b
 
-def getNumbers():
+# def getNumbers():
     
-    a = float(input("Enter a number:  "))
-    b = float(input("Enter a number:  "))
+#     a = float(input("Enter a number:  "))
+#     b = float(input("Enter a number:  "))
     
-    return (a,b)
+#     return (a,b)
 
-def repeat():
+# def repeat():
+    
+#     """
+#     This function asks the user if he wants to continue for the option he is currently
+#     using at the time.
+
+#     inputs: none
+#     outputs: cont (the continuation sentinel value)
+#     """
         
-    while True:
-        try:
-            # Asking the user how he wants to proceed.
-            cont = int(input(("1. Repeat\n" \
-                              "2. Main Menu\n" \
-                              "Enter a number: ")))
+#     while True:
+#         try:
+#             # Asking the user how he wants to proceed.
+#             cont = int(input(("1. Repeat\n" \
+#                               "2. Main Menu\n" \
+#                               "Enter a number: ")))
             
-            # If the user does not enter 1 or 2.
-            if (cont < 1 or cont > 3):
-                raise ValueError
+#             # If the user does not enter 1 or 2.
+#             if (cont < 1 or cont > 3):
+#                 raise ValueError
         
-        # If the user does not enter an appropriate int, display an
-        # error message.
-        except ValueError:
+#         # If the user does not enter an appropriate int, display an
+#         # error message.
+#         except ValueError:
             
-            print("\nPlease input a valid integer value.")
+#             print("\nPlease input a valid integer value.")
         
-        # Catch-all general error.
-        except:
-            print("\nGeneral Error.")
+#         # Catch-all general error.
+#         except:
+#             print("\nGeneral Error.")
             
-        else:
-            break
+#         else:
+#             break
     
-    return cont
+#     return cont
 
 # Add number validation/exception handling to getNumbers() 
-# Should the repeat() menu be in a separate function?
 # should the display of the math equation be put in the calc* functions
+# Ask Norris how I should send the numbers to the Calculations class (commented vs uncommented 
+#   version of Calculations.add())
 
 
 #=========#
@@ -129,7 +139,7 @@ def main():
     while sent != 0:
     
         # Display the main menu to the user.
-        sent = mainMenu()
+        sent = UI.mainMenu()
         
         #================#
         # OPTION 1:  Add #
@@ -138,7 +148,7 @@ def main():
         # If the user chooses option 1:
         if sent == 1:
             
-            # Initialize the continuation value. (just for this option)
+            # Initialize the continuation value.
             cont = -1
             
             # While the user wants to continue with the purchase:
@@ -149,12 +159,15 @@ def main():
                       "\n | OPTION 1:  Add |"\
                       "\n |================|\n")
                     
-                a, b = getNumbers()
-                print(a, " + ", b, "=", calcAdd(a,b), "\n")
-                
-                Calculations.add(a,b)
-                
-                cont = repeat()
+                # a, b = getNumbers()
+                a,b = UI.getNumbers()
+                # print(a, " + ", b, "=", calcAdd(a,b), "\n")
+                # calc = Calculations(a,b)
+                # print(a, " + ", b, "=", Calculations(a,b).add(a,b), "\n")
+                # print(a, " + ", b, "=", Calculations(a,b).add(), "\n")
+                # print(a, " + ", b, "=", Calculations().add(a,b), "\n")
+                Calculations().add(a,b)
+                cont = UI.repeat()
                     
         #=====================#
         # OPTION 2:  Subtract #
@@ -174,10 +187,9 @@ def main():
                       "\n | OPTION 2:  Subtract |"\
                       "\n |=====================|\n")
                     
-                a, b = getNumbers()
-                print(a, " - ", b, "=", calcSubtract(a,b), "\n")
-                
-                cont = repeat()
+                a,b = UI.getNumbers()
+                print(a, " + ", b, "=", Calculations().subtract(a,b), "\n")
+                cont = UI.repeat()
              
         #===================#
         # OPTION 3:  Divide #
@@ -194,10 +206,9 @@ def main():
                       "\n | OPTION 3:  Divide |"\
                       "\n |===================|\n")
                     
-                a, b = getNumbers()
-                print(a, " / ", b, "=", calcDivide(a,b), "\n")
-                
-                cont = repeat()
+                a,b = UI.getNumbers()
+                print(a, " + ", b, "=", Calculations().divide(a,b), "\n")
+                cont = UI.repeat()
                             
         #=====================#
         # OPTION 4:  Multiply #
@@ -214,10 +225,9 @@ def main():
                       "\n | OPTION 4:  Multiply |"\
                       "\n |=====================|\n")
                     
-                a, b = getNumbers()
-                print(a, " x ", b, "=", calcMultiply(a,b), "\n")
-                
-                cont = repeat()            
+                a,b = UI.getNumbers()
+                print(a, " + ", b, "=", Calculations().multiply(a,b), "\n")
+                cont = UI.repeat()      
             
         #==============================#
         # OPTION 5:  Exit the program. #
