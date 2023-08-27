@@ -1,5 +1,12 @@
 class Calculations:
     
+    """
+    This class contains the mathematical operations available is this program.
+    
+    inputs:  none
+    outputs:  displays math operations and answers
+    """
+    
     # def __init__(self, a, b):
     #     self.a = a
     #     self.b = b
@@ -11,13 +18,43 @@ class Calculations:
     # def add(self):
     #     return self.a + self.b
     
+    #==================#
     def add(self, a, b):
+    #==================#
+        
+        """
+        This function performs the addition math operation.
+        
+        inputs:  a, b 
+        outputs:  displays the addition operation and the answer.
+        """
+        
         print(a, " + ", b, "=", a+b, "\n")
-
+    
+    #=======================#
     def subtract(self, a, b):
+    #=======================#
+    
+        """
+        This function performs the subtraction math operation.
+        
+        inputs:  a, b 
+        outputs:  displays the subtraction operation and the answer.
+        """
+    
         print(a, " - ", b, "=", a-b, "\n")
 
+    #=====================#
     def divide(self, a, b):
+    #=====================#
+    
+        """
+        This function performs the division math operation.
+        
+        inputs:  a, b 
+        outputs:  displays the division operation and the answer.
+        """
+    
         try:
             ans = a/b
             
@@ -26,8 +63,18 @@ class Calculations:
             
         else:
             print(a, " \N{DIVISION SIGN} ", b, "=", ans, "\n")
-
+    
+    #======================#
     def multiply(self, a,b):
+    #======================#
+    
+        """
+        This function performs the multiplication math operation.
+        
+        inputs:  a, b 
+        outputs:  displays the multiplication operation and the answer.
+        """
+        
         print(a, " \N{MULTIPLICATION SIGN} ", b, "=", a*b, "\n")
         
     # def __repr__(self):

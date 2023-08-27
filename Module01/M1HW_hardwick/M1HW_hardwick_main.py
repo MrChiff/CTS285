@@ -3,131 +3,88 @@
 # Jonathan Hardwick
 # 23/08/30
 
+# =================================================================================================
+# M1HW
+# Unless otherwise instructed, you will be paired with a programming partner for this assignment.  
+# You do not *have* to write code together, but you are strongly encouraged to. You *do* need to 
+# collaborate on coming up with the overall design of the program.
+# 
+# This exercise tests your ability to turn English requirements into a working program. For this 
+# assignment, you will create a simple calculator. You are welcome to use any language you're 
+# currently studying. 
+# 
+# The program should use a simple text menu and text input. You only need to work with integers.
+# 
+# The program should display a text menu allowing the user to choose a calculation type. After 
+# doing this, the user will be prompted to enter two numbers. The program will display the result, 
+# then return to the main menu.
+# 
+# Tier Grading
+# We will use a Bronze/Silver/Gold tier system, where Bronze gives a maximum of 80 points, SIlver, 
+# a maximum of 90, and Gold up to 100. I recommend you always complete one tier before adding the 
+# functionality for later tiers.
+# 
+# Bronze (80/100)
+# The program should allow the user to add or subtract two numbers.
+# The program should also allow the user to divide or multiply two numbers.
+# 
+# Silver (90/100)
+# For this tier, the program should work in a way that roughly matches the behavior displayed in 
+# the sample output below. You may have to make some assumptions.
+# In addition, the program should be written in such a way that a given function either handles 
+# user input/output, OR does calculations. (No one function can do both).
+# (In other words, your UI code should call special functions to do the calculations.)
+# 
+# Gold (100/100)
+# For this tier, the program should be written in such a way that a given class or module either 
+# handles user input/output, OR does calculations.
+# In other words, similar to the Silver requirements, but broken into two or more classes or 
+# modules.
+# 
+# Sample Output
+# 
+# Welcome to the calculator program.
+# 1. Add
+# 2. Subtract
+# 3. Divide 
+# 4. Multiply
+# 5. Exit
+# Enter a number: 1
+# 
+# Add 
+# Enter a number: 2
+# Enter a number: 2
+# 2 + 2 = 4
+# 1. Repeat
+# 2. Main Menu
+# Enter a number: 1
+# 
+# Add
+# Enter a number: 1
+# Enter a number: 1
+# 1 + 1 = 2 
+# 1. Repeat
+# 2. Main Menu
+# Enter a number: 1
+# Welcome to the calculator program.
+# 1. Add
+# 2. Subtract
+# 3. Divide
+# 4. Multiply
+# 5. Exit
+# Enter a number: 5
+# Goodbye.
+# =================================================================================================
 
-from M1HW_hardwick_math import Calculations
+# Importing necessary libraries.
 from M1HW_hardwick_UI import UI
 
-# #=============#
-# def mainMenu():
-# #=============#
-
-#     """ 
-#     This function displays the main menu to the user. 
-    
-#     inputs: none
-#     outputs: sent (user selection/sentinel value) and displays main menu
-#     """
-    
-#     while True:
-        
-#         # Ask the user to choose one of the options.
-#         try:
-#             sent = int(input("\n----------------- Menu -----------------\n"\
-#                                "1) Add\n"\
-#                                "2) Subtract\n"\
-#                                "3) Divide\n"\
-#                                "4) Multiply\n"\
-#                                "0) Exit the program.\n"\
-#                                "----------------------------------------\n"\
-#                                "Enter your choice:\t"))
-                
-#         # If the user does not enter an int, display an error message.
-#         except ValueError:
-#             print("\nPlease input a valid integer value.")
-        
-#         # General error statement.
-#         except:
-#             print("General Error.")
-        
-#         # Int input validation. 
-#         else:
-            
-#             # If the user's input is an integer but not and appropriate choice: 
-#             if (sent > 5):
-#                 errorMessage()
-#                 mainMenu()
-            
-#             # If the user's input passes the previous validation steps, break the while loop and 
-#             # return "sent".
-#             else:
-#                 break
-    
-#     return sent
-
-# #=================#
-# def errorMessage():
-# #=================#
-
-#     """ 
-#     This function lets the user know that the option chosen is not in the menu. 
-    
-#     inputs: none
-#     outputs: displays error message and the main menu
-#     """
-    
-#     print("\nError:  Your choice is not valid.  Please enter a corrrect value.")
-    
-# def calcAdd(a, b):
-#     return a + b
-
-# def calcSubtract(a, b):
-#     return a-b
-
-# def calcDivide(a, b):
-#     return a/b
-
-# def calcMultiply(a,b):
-#     return a*b
-
-# def getNumbers():
-    
-#     a = float(input("Enter a number:  "))
-#     b = float(input("Enter a number:  "))
-    
-#     return (a,b)
-
-# def repeat():
-    
-#     """
-#     This function asks the user if he wants to continue for the option he is currently
-#     using at the time.
-
-#     inputs: none
-#     outputs: cont (the continuation sentinel value)
-#     """
-        
-#     while True:
-#         try:
-#             # Asking the user how he wants to proceed.
-#             cont = int(input(("1. Repeat\n" \
-#                               "2. Main Menu\n" \
-#                               "Enter a number: ")))
-            
-#             # If the user does not enter 1 or 2.
-#             if (cont < 1 or cont > 3):
-#                 raise ValueError
-        
-#         # If the user does not enter an appropriate int, display an
-#         # error message.
-#         except ValueError:
-            
-#             print("\nPlease input a valid integer value.")
-        
-#         # Catch-all general error.
-#         except:
-#             print("\nGeneral Error.")
-            
-#         else:
-#             break
-    
-#     return cont
 
 # Add number validation/exception handling to getNumbers() 
-# should the display of the math equation be put in the calc* functions
 # Ask Norris how I should send the numbers to the Calculations class (commented vs uncommented 
 #   version of Calculations.add())
-# add division by zero exception in option 4: divide
-# consider recursion instead of while 
+# consider recursion instead of while loop
+# Do I need to set a __str__ or __repr__ function in the classes?
 
 
 #=========#
@@ -153,11 +110,6 @@ def main():
         # If the user chooses option 1:
         if sent == 1:
             
-            # # While the user wants to continue with the purchase:
-            # while cont != 2:
-                
-            #     cont = UI().option1()
-            
             UI().option1(-1)
                     
         #=====================#
@@ -166,11 +118,6 @@ def main():
         
         # If the user chooses option 1:
         if sent == 2:
-            
-            # # While the user wants to continue with the purchase:
-            # while cont != 2:
-                
-            #     cont = UI().option2()
             
             UI().option2(-1)
              
