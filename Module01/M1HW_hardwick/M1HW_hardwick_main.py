@@ -100,9 +100,6 @@ def main():
         # Display the main menu to the user.
         sent = UI().mainMenu()
         
-        # Initialize the continuation value.
-        # cont = -1
-        
         #================#
         # OPTION 1:  Add #
         #================#
@@ -110,6 +107,7 @@ def main():
         # If the user chooses option 1:
         if sent == 1:
             
+            # Calls the option1 function and sends the initialized cont variable value of -1.
             UI().option1(-1)
                     
         #=====================#
@@ -119,6 +117,7 @@ def main():
         # If the user chooses option 1:
         if sent == 2:
             
+            # Calls the option2 function and sends the initialized cont variable value of -1.
             UI().option2(-1)
              
         #===================#
@@ -128,6 +127,7 @@ def main():
         # If the user chooses option 3:
         elif sent == 3:
             
+            # Calls the option3 function and sends the initialized cont variable value of -1.
             UI().option3(-1)
                             
         #=====================#
@@ -137,6 +137,7 @@ def main():
         # If the user chooses option 4:
         elif sent == 4:
             
+            # Calls the option4 function and sends the initialized cont variable value of -1.
             UI().option4(-1)      
             
         #==============================#
