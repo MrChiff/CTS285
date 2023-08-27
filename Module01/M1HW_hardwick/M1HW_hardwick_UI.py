@@ -19,7 +19,7 @@ class UI:
             
             # Ask the user to choose one of the options.
             try:
-                sent = int(input("\n----------------- Menu -----------------\n"\
+                sent = int(input("\n-------------- Calculator --------------\n"\
                                    "1) Add\n"\
                                    "2) Subtract\n"\
                                    "3) Divide\n"\
@@ -40,9 +40,9 @@ class UI:
             else:
                 
                 # If the user's input is an integer but not and appropriate choice: 
-                if (sent > 5):
-                    UI.errorMessage()
-                    UI.mainMenu()
+                if (sent > 4):
+                    UI().errorMessage()
+                    UI().mainMenu()
                 
                 # If the user's input passes the previous validation steps, break the while loop and 
                 # return "sent".
@@ -73,9 +73,9 @@ class UI:
         
         return (a,b)
     
-    #===========#
+    #===============#
     def repeat(self):
-    #===========#
+    #===============#
             
         while True:
             try:
@@ -103,7 +103,9 @@ class UI:
         
         return cont
     
+    #================#
     def option1(self):
+    #================#
         
         # Print option label.
         print("\n |================|"\
@@ -112,4 +114,43 @@ class UI:
             
         a,b = UI().getNumbers()
         Calculations().add(a,b)
+        return UI().repeat()
+    
+    #================#
+    def option2(self):
+    #================#
+    
+        # Print option label.
+        print("\n |=====================|"\
+              "\n | OPTION 2:  Subtract |"\
+              "\n |=====================|\n")
+            
+        a,b = UI().getNumbers()
+        Calculations().subtract(a,b)
+        return UI().repeat()
+    
+    #================#
+    def option3(self):
+    #================#
+    
+        # Print option label.
+        print("\n |===================|"\
+              "\n | OPTION 3:  Divide |"\
+              "\n |===================|\n")
+            
+        a,b = UI().getNumbers()
+        Calculations().divide(a,b)
+        return UI().repeat()
+        
+    #================#
+    def option4(self):
+    #================#
+    
+        # Print option label.
+        print("\n |=====================|"\
+              "\n | OPTION 4:  Multiply |"\
+              "\n |=====================|\n")
+            
+        a,b = UI().getNumbers()
+        Calculations().multiply(a,b)
         return UI().repeat()

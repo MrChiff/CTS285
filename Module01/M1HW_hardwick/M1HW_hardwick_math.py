@@ -18,7 +18,14 @@ class Calculations:
         print(a, " - ", b, "=", a-b, "\n")
 
     def divide(self, a, b):
-        print(a, " \N{DIVISION SIGN} ", b, "=", a/b, "\n")
+        try:
+            ans = a/b
+            
+        except ZeroDivisionError:
+            print("Division by zero! Please use a different denominator.\n")
+            
+        else:
+            print(a, " \N{DIVISION SIGN} ", b, "=", ans, "\n")
 
     def multiply(self, a,b):
         print(a, " \N{MULTIPLICATION SIGN} ", b, "=", a*b, "\n")

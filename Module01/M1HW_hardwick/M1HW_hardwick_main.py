@@ -127,6 +127,7 @@ from M1HW_hardwick_UI import UI
 # Ask Norris how I should send the numbers to the Calculations class (commented vs uncommented 
 #   version of Calculations.add())
 # add division by zero exception in option 4: divide
+# consider recursion instead of while 
 
 
 #=========#
@@ -142,15 +143,15 @@ def main():
         # Display the main menu to the user.
         sent = UI().mainMenu()
         
+        # Initialize the continuation value.
+        cont = -1
+        
         #================#
         # OPTION 1:  Add #
         #================#
         
         # If the user chooses option 1:
         if sent == 1:
-            
-            # Initialize the continuation value.
-            cont = -1
             
             # While the user wants to continue with the purchase:
             while cont != 2:
@@ -164,20 +165,10 @@ def main():
         # If the user chooses option 1:
         if sent == 2:
             
-            # Initialize the continuation value. (just for this option)
-            cont = -1
-            
             # While the user wants to continue with the purchase:
             while cont != 2:
                 
-                # Print option label.
-                print("\n |=====================|"\
-                      "\n | OPTION 2:  Subtract |"\
-                      "\n |=====================|\n")
-                    
-                a,b = UI.getNumbers()
-                print(a, " + ", b, "=", Calculations().subtract(a,b), "\n")
-                cont = UI.repeat()
+                cont = UI().option2()
              
         #===================#
         # OPTION 3:  Divide #
@@ -186,17 +177,9 @@ def main():
         # If the user chooses option 3:
         elif sent == 3:
             
-            cont = -1
             while cont != 2:
                 
-                # Print option label.
-                print("\n |===================|"\
-                      "\n | OPTION 3:  Divide |"\
-                      "\n |===================|\n")
-                    
-                a,b = UI.getNumbers()
-                print(a, " + ", b, "=", Calculations().divide(a,b), "\n")
-                cont = UI.repeat()
+                cont = UI().option3()
                             
         #=====================#
         # OPTION 4:  Multiply #
@@ -205,17 +188,9 @@ def main():
         # If the user chooses option 4:
         elif sent == 4:
             
-            cont = -1
             while cont != 2:
                 
-                # Print option label.
-                print("\n |=====================|"\
-                      "\n | OPTION 4:  Multiply |"\
-                      "\n |=====================|\n")
-                    
-                a,b = UI.getNumbers()
-                print(a, " + ", b, "=", Calculations().multiply(a,b), "\n")
-                cont = UI.repeat()      
+                cont = UI().option4()      
             
         #==============================#
         # OPTION 5:  Exit the program. #
