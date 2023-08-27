@@ -2,11 +2,9 @@ from M1HW_hardwick_math import Calculations
 
 class UI:
     
-    # from M1HW_hardwick_math import Calculations
-    
-    #=============#
+    #=================#
     def mainMenu(self):
-    #=============#
+    #=================#
     
         """ 
         This function displays the main menu to the user. 
@@ -51,9 +49,9 @@ class UI:
         
         return sent
     
-    #=================#
+    #=====================#
     def errorMessage(self):
-    #=================#
+    #=====================#
     
         """ 
         This function lets the user know that the option chosen is not in the menu. 
@@ -64,9 +62,9 @@ class UI:
         
         print("\nError:  Your choice is not valid.  Please enter a corrrect value.")
     
-    #===============#    
+    #===================#    
     def getNumbers(self):
-    #===============#
+    #===================#
         
         a = float(input("Enter a number:  "))
         b = float(input("Enter a number:  "))
@@ -103,54 +101,66 @@ class UI:
         
         return cont
     
-    #================#
-    def option1(self):
-    #================#
+    #======================#
+    def option1(self, cont):
+    #======================#
+    
+        # While the user wants to continue with the calculation:
+        while cont != 2:
+            
+            # Print option label.
+            print("\n |================|"\
+                  "\n | OPTION 1:  Add |"\
+                  "\n |================|\n")
+                
+            a,b = UI().getNumbers()
+            Calculations().add(a,b)
+            cont = UI().repeat()
+    
+    #======================#
+    def option2(self, cont):
+    #======================#
+    
+        # While the user wants to continue with the calculation:
+        while cont != 2:
+            
+            # Print option label.
+            print("\n |=====================|"\
+                  "\n | OPTION 2:  Subtract |"\
+                  "\n |=====================|\n")
+                
+            a,b = UI().getNumbers()
+            Calculations().subtract(a,b)
+            cont = UI().repeat()
+    
+    #======================#
+    def option3(self, cont):
+    #======================#
+    
+        # While the user wants to continue with the calculation:
+        while cont != 2:
+            
+            # Print option label.
+            print("\n |===================|"\
+                  "\n | OPTION 3:  Divide |"\
+                  "\n |===================|\n")
+                
+            a,b = UI().getNumbers()
+            Calculations().divide(a,b)
+            cont = UI().repeat()
         
-        # Print option label.
-        print("\n |================|"\
-              "\n | OPTION 1:  Add |"\
-              "\n |================|\n")
-            
-        a,b = UI().getNumbers()
-        Calculations().add(a,b)
-        return UI().repeat()
+    #======================#
+    def option4(self, cont):
+    #======================#
     
-    #================#
-    def option2(self):
-    #================#
-    
-        # Print option label.
-        print("\n |=====================|"\
-              "\n | OPTION 2:  Subtract |"\
-              "\n |=====================|\n")
-            
-        a,b = UI().getNumbers()
-        Calculations().subtract(a,b)
-        return UI().repeat()
-    
-    #================#
-    def option3(self):
-    #================#
-    
-        # Print option label.
-        print("\n |===================|"\
-              "\n | OPTION 3:  Divide |"\
-              "\n |===================|\n")
-            
-        a,b = UI().getNumbers()
-        Calculations().divide(a,b)
-        return UI().repeat()
+        # While the user wants to continue with the calculation:
+        while cont != 2:
         
-    #================#
-    def option4(self):
-    #================#
-    
-        # Print option label.
-        print("\n |=====================|"\
-              "\n | OPTION 4:  Multiply |"\
-              "\n |=====================|\n")
-            
-        a,b = UI().getNumbers()
-        Calculations().multiply(a,b)
-        return UI().repeat()
+            # Print option label.
+            print("\n |=====================|"\
+                  "\n | OPTION 4:  Multiply |"\
+                  "\n |=====================|\n")
+                
+            a,b = UI().getNumbers()
+            Calculations().multiply(a,b)
+            cont = UI().repeat()

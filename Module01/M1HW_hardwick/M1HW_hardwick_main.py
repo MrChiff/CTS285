@@ -144,7 +144,7 @@ def main():
         sent = UI().mainMenu()
         
         # Initialize the continuation value.
-        cont = -1
+        # cont = -1
         
         #================#
         # OPTION 1:  Add #
@@ -153,10 +153,12 @@ def main():
         # If the user chooses option 1:
         if sent == 1:
             
-            # While the user wants to continue with the purchase:
-            while cont != 2:
+            # # While the user wants to continue with the purchase:
+            # while cont != 2:
                 
-                cont = UI().option1()
+            #     cont = UI().option1()
+            
+            UI().option1(-1)
                     
         #=====================#
         # OPTION 2:  Subtract #
@@ -165,10 +167,12 @@ def main():
         # If the user chooses option 1:
         if sent == 2:
             
-            # While the user wants to continue with the purchase:
-            while cont != 2:
+            # # While the user wants to continue with the purchase:
+            # while cont != 2:
                 
-                cont = UI().option2()
+            #     cont = UI().option2()
+            
+            UI().option2(-1)
              
         #===================#
         # OPTION 3:  Divide #
@@ -177,9 +181,7 @@ def main():
         # If the user chooses option 3:
         elif sent == 3:
             
-            while cont != 2:
-                
-                cont = UI().option3()
+            UI().option3(-1)
                             
         #=====================#
         # OPTION 4:  Multiply #
@@ -188,9 +190,7 @@ def main():
         # If the user chooses option 4:
         elif sent == 4:
             
-            while cont != 2:
-                
-                cont = UI().option4()      
+            UI().option4(-1)      
             
         #==============================#
         # OPTION 5:  Exit the program. #
