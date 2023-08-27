@@ -94,23 +94,24 @@ class UI:
         inputs:  none
         outputs:  a tuple with the entered values
         """
-        
-        try:
-            a = float(input("Enter a number:  "))
-            b = float(input("Enter a number:  "))
-        
-        except ValueError:
-            UI().errorMessage()
-            print("Your input must be a DECIMAL or INTEGER number.")
-        
-        # General error statement.
-        except:
-            UI().generalError()
-        
-        # Int input validation. 
-        else: 
-        
-            return (a,b)
+        while True:
+            try:
+                a = float(input("Enter a number:  "))
+                b = float(input("Enter a number:  "))
+            
+            except ValueError:
+                UI().errorMessage()
+                print("Your input must be a DECIMAL or INTEGER number.\n")
+            
+            # General error statement.
+            except:
+                UI().generalError()
+            
+            # Int input validation. 
+            else: 
+                break
+                
+        return (a,b)
     
     #===============#
     def repeat(self):
