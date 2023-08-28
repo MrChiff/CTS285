@@ -85,12 +85,7 @@
 # Importing necessary libraries.
 from M1HW_hardwick_UI import UI
 
-
-# Add number validation/exception handling to getNumbers() 
-# Ask Norris how I should send the numbers to the Calculations class (commented vs uncommented 
-#   version of Calculations.add())
 # consider recursion instead of while loop
-# Do I need to set a __str__ or __repr__ function in the classes?
 
 
 #=========#

@@ -7,10 +7,8 @@ class Calculations:
     outputs:  displays math operations and answers
     """
     
-    # def __init__(self, a, b):
-    #     self.a = a
-    #     self.b = b
-        
+    def __init__(self):
+        pass
         
     # def add(self, a, b):
     #     return a + b
