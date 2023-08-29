@@ -85,9 +85,6 @@
 # Importing necessary libraries.
 from M1HW_hardwick_UI import UI
 
-# consider recursion instead of while loop
-
-
 #=========#
 def main():
 #=========#

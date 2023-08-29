@@ -1,3 +1,8 @@
+# CTS 285
+# M1HW
+# Jonathan Hardwick
+# 23/08/30
+
 class Calculations:
     
     """
@@ -7,15 +12,10 @@ class Calculations:
     outputs:  displays math operations and answers
     """
     
+    # constructorless __init__
     def __init__(self):
         pass
         
-    # def add(self, a, b):
-    #     return a + b
-    
-    # def add(self):
-    #     return self.a + self.b
-    
     #==================#
     def add(self, a, b):
     #==================#
@@ -62,9 +62,9 @@ class Calculations:
         else:
             print(a, " \N{DIVISION SIGN} ", b, "=", ans, "\n")
     
-    #======================#
-    def multiply(self, a,b):
-    #======================#
+    #=======================#
+    def multiply(self, a, b):
+    #=======================#
     
         """
         This function performs the multiplication math operation.
@@ -74,10 +74,3 @@ class Calculations:
         """
         
         print(a, " \N{MULTIPLICATION SIGN} ", b, "=", a*b, "\n")
-        
-    # def __repr__(self):
-        
-    #     if self.key is None:
-    #         print("Empty")
-    #     else:
-    #         print("Node: " + str(self.key))

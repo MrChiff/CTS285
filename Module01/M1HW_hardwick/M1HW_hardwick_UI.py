@@ -1,3 +1,9 @@
+# CTS 285
+# M1HW
+# Jonathan Hardwick
+# 23/08/30
+
+# importing the necessary libraries for the code to work properly.
 from M1HW_hardwick_math import Calculations
 
 class UI:
@@ -8,6 +14,10 @@ class UI:
     inputs:  none
     outputs:  displays the user interface
     """
+    
+    # constructorless __init__
+    def __init__(self):
+        pass
     
     #=================#
     def mainMenu(self):
