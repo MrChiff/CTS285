@@ -27,7 +27,7 @@ class Calculations:
         outputs:  displays the addition operation and the answer.
         """
         
-        print(a, " + ", b, "=", a+b, "\n")
+        print("\n", a, " + ", b, "=", a+b)
     
     #=======================#
     def subtract(self, a, b):
@@ -40,7 +40,7 @@ class Calculations:
         outputs:  displays the subtraction operation and the answer.
         """
     
-        print(a, " - ", b, "=", a-b, "\n")
+        print("\n", a, " - ", b, "=", a-b)
 
     #=====================#
     def divide(self, a, b):
@@ -57,10 +57,10 @@ class Calculations:
             ans = a/b
             
         except ZeroDivisionError:
-            print("Division by zero! Please use a different denominator.\n")
+            print("\nDivision by zero! Please use a different denominator.")
             
         else:
-            print(a, " \N{DIVISION SIGN} ", b, "=", ans, "\n")
+            print("\n", a, " \N{DIVISION SIGN} ", b, "=", ans)
     
     #=======================#
     def multiply(self, a, b):
@@ -73,4 +73,4 @@ class Calculations:
         outputs:  displays the multiplication operation and the answer.
         """
         
-        print(a, " \N{MULTIPLICATION SIGN} ", b, "=", a*b, "\n")
+        print("\n", a, " \N{MULTIPLICATION SIGN} ", b, "=", a*b)

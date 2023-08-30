@@ -4,6 +4,17 @@
 # 23/08/30
 
 # =================================================================================================
+# Release Notes:
+#
+# All numbers are decimals.
+# =================================================================================================
+
+# =================================================================================================
+# "User Storeies"
+# As a student I want to use mathematical operations so that I can calculate values.
+# =================================================================================================
+
+# =================================================================================================
 # M1HW
 # Unless otherwise instructed, you will be paired with a programming partner for this assignment.  
 # You do not *have* to write code together, but you are strongly encouraged to. You *do* need to 
@@ -74,12 +85,6 @@
 # 5. Exit
 # Enter a number: 5
 # Goodbye.
-# =================================================================================================
-
-
-# =================================================================================================
-# "User Storeies"
-# As a student I want to use mathematical operations so that I can calculate values.
 # =================================================================================================
 
 # Importing necessary libraries.
