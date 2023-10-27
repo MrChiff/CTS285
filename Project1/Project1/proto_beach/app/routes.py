@@ -7,6 +7,8 @@ from app import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
 import secrets
 from PIL import Image
+from app import Answer_Checker
+
 
 
 # Routes are what we create to move to other webpages.
@@ -117,9 +119,9 @@ def logout():
     return redirect(url_for('home'))
 
 
-########################
-# Home Page Route #
-########################
+#######################
+# Game Checker Route  #
+#######################
 # This is to log the user out of the current session so another user can log in. 
 @app.route("/game/checker")
 @login_required
@@ -133,7 +135,6 @@ def checker():
 #########################
 # This is to log the user out of the current session so another user can log in. 
 @app.route("/user_info/change_password")
-@login_required
 def change_password():
     return render_template('change_password.html', title='Change Password')
 
@@ -143,36 +144,39 @@ def change_password():
 # check_ans Route #
 ###################
 # This is to log the user out of the current session so another user can log in. 
-@app.route("/check_ans", methods = ['POST'])
+@app.route("/game/check_ans", methods = ['GET','POST'])
 @login_required
 def check_ans():
-    num1 = request.form["num1"]
-    operator = request.form["operator"]
-    num2 = request.form["num2"]
-    ans = request.form["ans"]
-    if  operator == "plus":
-        result = int(num1) + int(num2)
-        if str(result) == ans:
-            return "Congradulations You got the question right " + num1 + " + " + num2 + " = " + ans
+    if request.method == 'POST':
+        num1 = request.form['num1']
+        math_op = request.form['math_op']
+        num2 = request.form['num2']
+        ans = request.form['ans']
+
+        if not num1:
+            flash('1st number is required!')
+        elif not math_op:
+            flash('The operator is required!')
+        elif not num2:
+            flash('2nd number is required!')
+        elif not ans:
+            flash('The answer is required!')
+        elif not int(num1) and num1 != 0:
+            flash('1st number is NOT an integer!')
+        elif math_op != "+" and math_op != "-" and math_op != "*" and math_op != "/":
+            flash('Please enter an appropriate operator!')
+        elif not int(num2) and num2 != 0:
+            flash('The 2nd number is NOT an integer!')
+        # Mod to allow for negative ans
+        elif not int(ans) and ans != 0:
+            flash('The answer is NOT an integer!')
         else:
-            return "That's not quite right. Here is the correct answer " + num1 + " + " + num2 + " = " + str(result)
-    elif operator == "minus":
-        result = int(num1) - int(num2)
-        if str(result) == ans:
-            return "Congradulations You got the question right " + num1 + " - " + num2 + " = " + ans
-        else:
-            return "That's not quite right. Here is the correct answer " + num1 + " - " + num2 + " = " + str(result)
-    elif operator == "multiply":
-        result = int(num1) * int(num2)
-        if str(result) == ans:
-            return "Congradulations You got the question right " + num1 + " x " + num2 + " = " + ans
-        else:
-            return "That's not quite right. Here is the correct answer " + num1 + " x " + num2 + " = " + str(result)
-    elif operator == "divide":
-        result = int(num1) / int(num2)
-        if str(result) == ans:
-            return "Congradulations You got the question right " + num1 + " / " + num2 + " = " + ans
-        else:
-            return "That's not quite right. Here is the correct answer " + num1 + " / " + num2 + " = " + str(result)
-    else:
-        print("There is an error")
+            true_or_false = Answer_Checker.Answer_Checker.right_or_wrong_var(num1,math_op,num2,int(ans))
+            if true_or_false:
+                eqn = num1 + " " + math_op + " " + num2 + " = " + ans 
+            else:
+                eqn = ""
+            return render_template('answer_check.html').format(feedback = true_or_false, eqn = eqn)
+
+    return render_template('checker.html').format(feedback="", eqn = "")
+
